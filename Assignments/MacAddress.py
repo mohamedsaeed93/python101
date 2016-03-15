@@ -11,8 +11,10 @@ class MacAddress:
         return MacAddress(self.address + MacAddress(address_value).address)
 
     def __str__(self):
-        return ':'.join(s.encode('hex') for s in str(hex(self.address))[2:].decode('hex'))
-        # return ':'.join([str(hex(self.address)[2:])[i:i+2] for i,j in enumerate(str(hex(self.address))[2:]) if not (i%2)])
+        return ':'.join([str(hex(self.address)[2:])[i:i+2] for i,j in enumerate(str(hex(self.address))[2:]) if not (i%2)])
+        # works only with python2
+        # return ':'.join(s.encode('hex') for s in str(hex(self.address))[2:].decode('hex'))
+        
 
 address1 = MacAddress("A6:C2:D5:C6:89:AB")
 address2 = MacAddress(0xa6c2d5c689ab)
